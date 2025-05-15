@@ -1,79 +1,426 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>День программиста — Дубай</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>День программиста | IT Technology</title>
+    <style>
+        :root {
+            --birch-blue: #31e7ed;
+            --white: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: var(--white);
+        }
+        
+        header {
+            background-color: var(--birch-blue);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(95, 158, 160, 0.7), rgba(95, 158, 160, 0.7)), url('/Users/alexander/Desktop/NEW SITE/Galataport.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--birch-blue);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--white);
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--white);
+            color: var(--birch-blue);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--birch-blue);
+            border: 2px solid var(--birch-blue);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--birch-blue);
+            color: var(--white);
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--birch-blue);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .program-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            background-color: #f5f5f5;
+            border-left: 4px solid var(--birch-blue);
+            padding: 1rem;
+        }
+        
+        .time {
+            font-weight: bold;
+            min-width: 120px;
+            color: var(--birch-blue);
+        }
+        
+        .event {
+            flex-grow: 1;
+        }
+        
+        .speakers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .speaker {
+            width: 250px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .speaker-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--birch-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .interactive {
+            background-color: #f0f8ff;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .counter {
+            font-size: 2rem;
+            color: var(--birch-blue);
+            margin: 1rem 0;
+        }
+        
+        footer {
+            background-color: var(--birch-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        /* Форма регистрации */
+        .registration-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+
+
+padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--birch-blue);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--birch-blue);
+            box-shadow: 0 0 5px rgba(95, 158, 160, 0.5);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background-color: #e8f5e9;
+            border-radius: 10px;
+            color: #2e7d32;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .program-item {
+                flex-direction: column;
+            }
+            
+            .time {
+                margin-bottom: 0.5rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <h1>День программиста</h1>
+            <p class="subtitle">IT Technology приглашает на уникальное мероприятие</p>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>22 мая 2017</h2>
+            <p>Круизный лайнер в Стамбуле</p>
+            <a href="#register" class="btn">Зарегистрироваться</a>
+        </div>
+    </section>
+    
+    <section id="program">
+        <div class="container">
+            <h2 class="section-title">Программа мероприятия</h2>
+            
+            <div class="program-item">
+                <div class="time">14:00-15:00</div>
+                <div class="event">Сбор и посадка гостей на лайнер</div>
+            </div>
+            
+            <div class="program-item">
+                <div class="time">15:30-16:00</div>
+                <div class="event">Приветствие и открытие мероприятия</div>
+            </div>
+            
+            <div class="program-item">
+                <div class="time">16:00-17:00</div>
+                <div class="event">"Как строить карьеру в IT и не выгореть"</div>
+            </div>
+            
+            <div class="program-item">
+                <div class="time">17:00-18:00</div>
+                <div class="event">Фуршет и свободное общение</div>
+            </div>
+            
+            <div class="program-item">
+                <div class="time">19:00-20:30</div>
+                <div class="event">Развлекательная программа</div>
+            </div>
+            
+            <div class="program-item">
+                <div class="time">20:30-22:00</div>
+                <div class="event">Награждение и сюрпризы</div>
+            </div>
+            
+            <div class="program-item">
+                <div class="time">22:00</div>
+                <div class="event">Подведение итогов и завершение мероприятия</div>
+            </div>
+            
+            <div class="program-item">
+                <div class="time">23:00</div>
+                <div class="event">Возвращение в Галапорт</div>
+            </div>
+        </div>
+    </section>
 
-<header>
-  <div class="container">
-    <img src="logo.png" alt="Логотип" class="logo"><h1>День программиста</h1>
-    <p>На яхте в Дубае • 22 мая</p>
-    <a href="#register" class="btn">Регистрация</a>
-  </div>
-</header>
+    <section id="glava cjmpani ">
+        <div class="container">
+          <h2 class="section-title">Глава  компании</h2>
 
-<section id="about">
-  <div class="container">
-    <h2>О мероприятии</h2>
-    <p>Эксклюзивная вечеринка на яхте с IT-спикерами, нетворкингом, конкурсами и закатом над Персидским заливом.</p>
-  </div>
-</section>
+          <div class="glava cjmpani">
+                <div class="glava cjmpani">
+                    
+                    <img src="/Users/alexander/Desktop/NEW SITE/GLAVA COMPANII.jpg"img src>
+                    <h3>Петрушевский Александр</h3>
+                    <p> Владелец и директор IT Technology</p>
+                
+                </div>
+                
 
-<section id="speakers">
-  <div class="container">
-    <h2>Спикеры</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="" alt="Спикер">
-        <h3>Татьяна Вавилова</h3>
-        <p>  Основатель компании TeamLine-Consult, эксперт-консультант в области оценки личности, эксперт ФРИИ по оценке и формированию команд</p>
-      </div>
-      <div class="card">
-        <img src="/Users/alexander/Downloads/Telegram Desktop/devday_yacht_site (3)/Афонасьев Евгений.png" alt="Спикер">
-        <h3>Евгений Афонасьев</h3>
-        <p> Team Lead в «Авито», руководит командой в юните «Антифрод» , является спикером и участником различных конференций по Python и бэкенд-разработке. 
+          
 
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+    
+            <h2 class="section-title">Наши спикеры</h2>
+            
+            <div class="speakers">
+                <div class="speaker">
+                 
+                    <img src="/Users/alexander/Desktop/NEW SITE/  Татьяна Вавилова.png" alt="Спикер 1" class="speaker-img">
+                    <h3>Мария Иванова</h3>
+                    <p>Основатель компании TeamLine-Consult, эксперт-консультант в области оценки личности, эксперт ФРИИ по оценке и формированию команд</p>
+                  
+                </div>
+                
+                <div class="speaker">
+                    <img src="/Users/alexander/Desktop/NEW SITE/Афонасьев Евгений.png" alt="Спикер 2" class="speaker-img">
+                    <h3>Евгений Афонасьевт</h3>
+                    <p>Team Lead в «Авито», руководит командой в юните «Антифрод» , является спикером и участником различных конференций по Python и бэкенд-разработке</div></p>
 
-<section id="program">
-  <div class="container">
-    <h2>Программа</h2>
-    <ul>
+                </div>
+            </div>
+    
+    </section>
+    
+   
+            
+          
+        </div>
+    </section>
+    
+    <section id="register">
+        <div class="container">
+            <h2 class="section-title">Регистрация</h2>
+            
+            <div class="registration-form">
+                <form id="eventRegistration">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">Имя*</label>
+                            <input type="text" id="firstName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Фамилия*</label>
+                            <input type="text" id="lastName" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Телефон*</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Компания</label>
+                        <input type="text" id="company" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="position">Должность</label>
+                        <input type="text" id="position" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Участие в мероприятиях IT Technology:</label>
+                        <div>
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Я хочу получать информацию о будущих мероприятиях</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-footer">
+                        <button type="submit" class="btn">Зарегистрироваться</button>
+                    </div>
+                </form>
+                
+                <div class="success-message" id="successMessage">
+                    <h3>Спасибо за регистрацию!</h3>
+                    <p>Мы отправили подтверждение на ваш email. До встречи на мероприятии!</p>
+                    <a href="#" class="btn btn-outline">Вернуться на главную</a>
 
-      <li>16:00 — Сбор и посадка</li>
-      <li>17:00 — Мотивационная конференция</li>
-      <li>18:00 - Фуршет и свободное общение</li>
-      <li>19:00 — Конкурс «Самый безумный код»</li>
-      <li>21:00 — Дискотека и маршрут вдоль побережья и Залива Джумейры</li>
-    </ul>
-  </div>
-</section>
-
-<section id="register">
-  <div class="container">
-    <h2>Зарегистрироваться</h2>
-    <form id="regForm">
-      <input type="text" placeholder="Ваше имя" required>
-      <input type="email" placeholder="Email" required>
-      <button type="submit">Отправить</button>
-    </form>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    <p>© 2025 Программисты на яхте. Свяжитесь с нами: hello@yachtdevday.com</p>
-  </div>
-</footer>
-
-<script src="script.js"></script>
+</div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2017 IT Technology. Все права защищены.</p>
+            <p>Круизный лайнер, Стамбул</p>
+            <p>Контактный email: event@ittechnology.com</p>
+        </div>
+    </footer>
+    
+    <script>
+        
+            
+            // Здесь можно добавить AJAX-запрос для отправки данных на сервер
+            // Для демонстрации просто покажем сообщение об успехе
+            
+            // Скрываем форму
+            this.style.display = 'none';
+            
+            // Показываем сообщение об успехе
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Можно также сбросить форму
+            // this.reset();
+            
+            // В реальном проекте здесь бы была отправка данных на сервер
+            // например, с помощью fetch или XMLHttpRequest
+        
+    </script>
 </body>
 </html>
